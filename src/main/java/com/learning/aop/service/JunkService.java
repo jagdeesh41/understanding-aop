@@ -18,7 +18,6 @@ public class JunkService {
         return List.of(new Pizza(Map.of(PizzaEnum.HARISSA,10,PizzaEnum.PEPPERONI,20)),
                 new Pizza(Map.of(PizzaEnum.PEPPERONI,20,PizzaEnum.HARISSA,20)));
     }
-
     public List<Burger> getTypesOfBurger()
     {
         return List.of(new Burger(BurgerEnum.CHEESE_BURGER),
