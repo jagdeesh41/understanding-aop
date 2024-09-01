@@ -82,4 +82,12 @@ public class LoggingAspect {
         log.info("method called with this <Employee> particular interface");
     }
 
+    @Before("@within(org.springframework.stereotype.Service)"
+            +"&& target(com.learning.aop.service.JunkService)")
+    //when combining point cuts it needs to refer to the same class then only they work
+    public void anyMethodInEmployeeController()
+    {
+        log.info("Any Method invoked in EmployeeController");
+    }
+
 }
