@@ -26,7 +26,6 @@ public class LoggingAspect {
     {
         log.info("EmployeeController.fetchEmployee(*) invoked");
     }
-
     @Before("execution(public * com.learning.aop.controller.EmployeeController.fetchEmployeeWithId(..))")
     public void fetchEmployeeWithMultipleParam()
     {
@@ -42,18 +41,45 @@ public class LoggingAspect {
     {
         log.info("EmployeeController.Aspect 2 invoked in current SubPackage");
     }
-
     @Before("@within(org.springframework.stereotype.Service)")
     public void classLevelAnnotationMatcher()
     {
-        log.info("Service annotation touched");
+        log.info("Service annotation invoked");
     }
-
     @Before("@annotation(org.springframework.web.bind.annotation.GetMapping)")
     public void methodLevelAnnotationMatcher()
     {
         log.info("GetMapping annotation  touched");
     }
-
+    @Before("args(int,String)")
+    public void matchArgsStringAndInteger()
+    {
+        log.info("Args Match Invoked with int,String");
+    }
+//    @Before("args(com.learning.aop.model.FoodDto)")
+//    public void matchArgsWithFoodDto()
+//    {
+//        log.info("Args Match Invoked with FoodDto.class");
+//    }
+//    @Before("@args(org.springframework.stereotype.Service)")
+//    public void matchWithServiceAnnotation()
+//    {
+//        log.info("Args Match Invoked with FoodDto.class");
+//    }
+    @Before("target(com.learning.aop.service.JunkService)")
+    public void targetMatchWithJunkService()
+    {
+        log.info("method called with this <JunkService> particular instance");
+    }
+    @Before("target(com.learning.aop.service.EmployeeService)")
+    public void targetMatchWithEmployeeService()
+    {
+        log.info("method called with this <Employee> particular instance");
+    }
+    @Before("target(com.learning.aop.service.Employee)")
+    public void targetMatchWithEmployeeInterface()
+    {
+        log.info("method called with this <Employee> particular interface");
+    }
 
 }
