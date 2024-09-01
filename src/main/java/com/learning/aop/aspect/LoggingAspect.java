@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -89,5 +90,27 @@ public class LoggingAspect {
     {
         log.info("Any Method invoked in EmployeeController");
     }
+
+    @Pointcut("target(com.learning.aop.service.JunkService)")
+    void customPointCutForJunkService()
+    {
+        //creating a custom point cut for JunkService instance
+    }
+
+    @Pointcut("@within(org.springframework.stereotype.Service)")
+    void customPointCutForServiceAnnotation()
+    {
+        //creating @Service PointCut
+    }
+
+    @Before("customPointCutForJunkService()")
+    void customPointCutImplementation()
+    {
+        log.info("Implementation of custom point cut");
+    }
+
+
+
+
 
 }
