@@ -108,9 +108,4 @@ public class LoggingAspect {
     {
         log.info("Implementation of custom point cut");
     }
-
-
-
-
-
 }
