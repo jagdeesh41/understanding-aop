@@ -35,12 +35,24 @@ public class LoggingAspect {
     @Before("within(com.learning.aop.controller.EmployeeController)")
     public void fetchLogsForAll()
     {
-        log.info("EmployeeController.Aspect 1 invoked");
+        log.info("EmployeeController.Aspect 1 invoked in current Package");
     }
     @Before("within(com.learning.aop..*)")
     public void fetchLogsForAllPackageAndSubPackage()
     {
-        log.info("EmployeeController.Aspect 2 invoked");
+        log.info("EmployeeController.Aspect 2 invoked in current SubPackage");
+    }
+
+    @Before("@within(org.springframework.stereotype.Service)")
+    public void classLevelAnnotationMatcher()
+    {
+        log.info("Service annotation touched");
+    }
+
+    @Before("@annotation(org.springframework.web.bind.annotation.GetMapping)")
+    public void methodLevelAnnotationMatcher()
+    {
+        log.info("GetMapping annotation  touched");
     }
 
 
